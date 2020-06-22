@@ -1,5 +1,12 @@
-<div class="center jumbotron">
-  <div class="text-center">
-    <h1>Welcome to the Microposts</h1>
+<% if logged_in? %>
+  <h1>アニメレビューサイト</h1>
+  <%= render 'animes/animes', animes: @animes %>
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>アニメレビューサイト</h1>
+      <%= link_to '会員登録', signup_path, class: 'btn btn-lg btn-primary' %>
+      <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %>
+    </div>
   </div>
-</div>
+<% end %>

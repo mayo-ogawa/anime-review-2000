@@ -1,0 +1,17 @@
+<h1>アニメ詳細ページ</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div>
+        <%= image_tag @anime.image.url if @anime.image? %>
+      </div>
+      <div>
+        <h2><%= @anime.name %></h2>
+        <p>説明文<br><%= @anime.content %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <%= render 'reviews/reviews', reviews: @reviews, anime: @anime %>
+    </div>
+  </div>
+</div>
