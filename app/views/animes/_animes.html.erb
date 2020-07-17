@@ -1,18 +1,16 @@
-<div class="container">
-  <div class="row">
-    <% animes.each do |anime| %>
-      <div class="col-md-4">
-        <div>
-          <%= image_tag anime.image.url if anime.image? %>
-        </div>
-        <div>
-          <%= anime.name %><%= link_to "レビュー", anime, class: 'btn btn-primary btn-sm' %>
-          <% if current_user.admin? %>
-            <%= link_to "Delete", anime, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
-        </div>
+<div class="animes">
+  <% animes.each do |anime| %>
+    <div class="pr-5" id="anime">
+      <div class="image">
+        <%= image_tag anime.image.url :size =>'320x480' if anime.image? %>
       </div>
-    <% end %>
-  </div>
+      <div class="mb-3">
+        <%= anime.name %><%= link_to "レビュー", anime, class: 'btn btn-primary btn-sm' %>
+        <% if current_user.admin? %>
+          <%= link_to "Delete", anime, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
 <%= paginate animes %>
